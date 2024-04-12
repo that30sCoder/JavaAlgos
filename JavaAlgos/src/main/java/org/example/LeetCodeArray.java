@@ -11,7 +11,7 @@ public class LeetCodeArray {
 
         //LeetCode 3 sum Problem
         //Problem statement : Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
-        int[] nums = {-1,0,1,2,-1,-4};
+        int[] nums = {-1,0,1,2,-1,-4,-2,-3,3,0,4};
         List<List<Integer>> threeSumList = new ArrayList<>();
         //Calculate two sum first and then fix the initial Pointer
         threeSumList = threeSum(nums);
@@ -71,9 +71,11 @@ public class LeetCodeArray {
                     while( k<j && nums[k]==nums[k+1]){
                         k++;
 
+
                     }
                     while( k<j && nums[j]==nums[j-1]){
                         j--;
+
                     }
                    j--;
                    k++;
