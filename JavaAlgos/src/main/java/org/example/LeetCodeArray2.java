@@ -5,7 +5,7 @@ import java.util.*;
 
 public class LeetCodeArray2 {
     public static void main(String[] args) {
-        int[] nums = {1,3};
+        int[] nums = {-3,-1,0,0,0,3,3};
         int target = 6;
         //2Sum problem
 
@@ -15,9 +15,47 @@ public class LeetCodeArray2 {
        */
 
         //Median Problem
-        int[] nums2 = {2};
+        /*
+        int[] nums2 = {1};
         double median = findMedianSortedArrays( nums, nums2);
         System.out.println("Median is " + median);
+
+         */
+
+        //Remove Duplicates Sorted Array
+        int i = removeDuplicates(nums);
+        System.out.println("Number of unique elements are " + i);
+
+
+    }
+
+    static int removeDuplicates(int[] nums) {
+        Map<Integer,Integer> countMap = new TreeMap<>();
+
+
+        for(int i = 0;i<nums.length;i++){
+            if(countMap.get(nums[i])==null)
+                countMap.put(nums[i],0);
+            else{
+                int counter = countMap.get(nums[i]);
+                counter ++;
+                countMap.put(nums[i],counter);
+
+
+            }
+
+        }
+
+        System.out.println("Array " + nums);
+        int i = 0;
+        while(i<countMap.keySet().size()) {
+            for (Integer key : countMap.keySet()) {
+                nums[i] = key;
+                i++;
+            }
+        }
+        System.out.println(" " + nums);
+        return countMap.keySet().size();
     }
 
     private static double findMedianSortedArrays(int[] nums, int[] nums2) {
@@ -30,8 +68,9 @@ public class LeetCodeArray2 {
       int sizeMedian = length1 + length2 ;
       int[] medianArray = new int[length1+ length2];
 
-      //Merge the arrays normally
-       while(i <length1) {
+      //Merge the arrays normally, if arrays are unsorted
+        /*
+       while(i <length1 ) {
            medianArray[k] = nums[i];
            k++;
            i++;
@@ -42,7 +81,33 @@ public class LeetCodeArray2 {
             j++;
         }
 
-        Arrays.sort(medianArray);
+         */
+
+        while(i<length1 && j<length2){
+            if(  nums[i]<nums2[j]) {
+                medianArray[k] = nums[i];
+                i++;
+                k++;
+            }
+            else if(nums[i]>=nums2[j]) {
+                medianArray[k] = nums2[j];
+                j++;
+                k++;
+            }
+        }
+
+        while(i<length1 && k<sizeMedian){
+            medianArray[k]= nums[i];
+            i++;
+            k++;
+        }
+        while(j<length2 && k<sizeMedian){
+            medianArray[k]= nums2[j];
+            j++;
+            k++;
+        }
+
+       // Arrays.sort(medianArray);
         double median = (sizeMedian%2)==0 ? (double)((medianArray[(sizeMedian-1)/2]
                 + medianArray[(sizeMedian/2)]))/2
                 : (double) (medianArray[(sizeMedian)/2]);
