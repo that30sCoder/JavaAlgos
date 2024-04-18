@@ -5,7 +5,7 @@ import java.util.*;
 
 public class LeetCodeArray2 {
     public static void main(String[] args) {
-        int[] nums = {-3,-1,0,0,0,3,3};
+        int[] nums = {0,0,1,1,1,2,2,3,3,4};
         int target = 6;
         //2Sum problem
 
@@ -30,32 +30,34 @@ public class LeetCodeArray2 {
     }
 
     static int removeDuplicates(int[] nums) {
-        Map<Integer,Integer> countMap = new TreeMap<>();
+       // Map<Integer,Integer> countMap = new TreeMap<>();
+        int[] printArray = new int[nums.length];
+            int j = 1;
+        for(int i = 0;i<nums.length-1;i++){
 
+                if (nums[i] == nums[i +1]) {
+                    nums[i]=Integer.MAX_VALUE;
 
-        for(int i = 0;i<nums.length;i++){
-            if(countMap.get(nums[i])==null)
-                countMap.put(nums[i],0);
-            else{
-                int counter = countMap.get(nums[i]);
-                counter ++;
-                countMap.put(nums[i],counter);
+                }
+                else
+                    j++;
 
-
-            }
 
         }
+        Arrays.sort(nums);
 
         System.out.println("Array " + nums);
-        int i = 0;
+       /* int i = 0;
         while(i<countMap.keySet().size()) {
             for (Integer key : countMap.keySet()) {
                 nums[i] = key;
                 i++;
             }
         }
-        System.out.println(" " + nums);
-        return countMap.keySet().size();
+
+        */
+        System.out.println(" " + printArray +j );
+        return j;
     }
 
     private static double findMedianSortedArrays(int[] nums, int[] nums2) {
