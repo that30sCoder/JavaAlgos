@@ -1,1 +1,5 @@
-LeetCode Problems and Solutions --
+# JavaAlgosDs
+LeetCode Programs and Solutions
+
+Contains :
+LeetCode Programs
