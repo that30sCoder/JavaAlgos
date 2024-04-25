@@ -6,7 +6,7 @@ import java.util.List;
 public class LeetCodeArray3 {
     public static void main(String[] args) {
 
-        int[] nums = {0,1};
+        int[] nums = {0,1,2};
         int val = 2;
         //Remove all occurences of val and return size of modified array
       /* int result =  removeElement(nums,val);
@@ -59,22 +59,20 @@ public class LeetCodeArray3 {
     public static List<List<Integer>> permute(int[] nums) {
 
         List<List<Integer>> permutationArray = new ArrayList<>();
-        for(int i = 0;i<nums.length;i++) {
-            List<Integer> arrays = new ArrayList<>();
-            arrays.add(nums[i]);
-            int j = i + 1;
-            while (j < nums.length - 1) {
-                arrays.add(nums[j]);
-                int k = nums.length - 1;
-                while (k != j && k > i) {
-                    arrays.add(nums[k]);
-                    k--;
-                }
-                j++;
-            }
-        }
-
-        return permutationArray;
+        List<Integer> arrays = new ArrayList<>();
+        //The function should be able to check the element,add uniques and then remove the latest added
+       backTrackAlgo(arrays,nums,permutationArray);
     }
 
-}
+        public static Boolean backTrackAlgo (List<Integer> createdArray,int[] nums,List<List<Integer>> permuatationList){
+           if(createdArray.size()==nums.length){
+               permuatationList.add(createdArray);
+
+           }
+        }
+
+
+
+    }
+
+
