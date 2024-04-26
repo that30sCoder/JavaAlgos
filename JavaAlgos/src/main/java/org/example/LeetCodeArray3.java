@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LeetCodeArray3 {
+    static int counter = 0;
     public static void main(String[] args) {
 
-        int[] nums = {0,1,2};
+        int[] nums = {1,4,7};
         int val = 2;
+
         //Remove all occurences of val and return size of modified array
       /* int result =  removeElement(nums,val);
         System.out.println("Size of modified array is "+ result);
@@ -61,14 +63,31 @@ public class LeetCodeArray3 {
         List<List<Integer>> permutationArray = new ArrayList<>();
         List<Integer> arrays = new ArrayList<>();
         //The function should be able to check the element,add uniques and then remove the latest added
-       backTrackAlgo(arrays,nums,permutationArray);
+        backTrackAlgo(arrays, nums, permutationArray);
+        System.out.println(" The list is" + permutationArray);
+        return permutationArray;
     }
 
-        public static Boolean backTrackAlgo (List<Integer> createdArray,int[] nums,List<List<Integer>> permuatationList){
-           if(createdArray.size()==nums.length){
-               permuatationList.add(createdArray);
-
+        public static void backTrackAlgo (List<Integer> createdArray,int[] nums,List<List<Integer>> permutationList){
+            //Check the length of the arraylist
+        if(createdArray.size()==nums.length){
+               permutationList.add((new ArrayList<>(createdArray)));
+            List<Integer> tempList = new ArrayList<>();
+            tempList.addAll(createdArray);
+           // System.out.println("what we return " + counter);
+                return;
            }
+           for(int i = 0;i<nums.length;i++){
+               if(createdArray.contains(nums[i]))
+                    continue;
+               else   {
+                   createdArray.add(nums[i]);
+                   backTrackAlgo(createdArray, nums, permutationList);
+                   System.out.println("num" + nums[i]);
+                   createdArray.remove(createdArray.size()-1);
+               }
+           }
+
         }
 
 
