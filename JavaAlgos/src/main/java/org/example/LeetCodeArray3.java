@@ -1,10 +1,9 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class LeetCodeArray3 {
-    static int counter = 0;
+
     public static void main(String[] args) {
 
         int[] nums = {1,4,7};
@@ -62,7 +61,9 @@ public class LeetCodeArray3 {
 
         List<List<Integer>> permutationArray = new ArrayList<>();
         List<Integer> arrays = new ArrayList<>();
+        Set<Integer> results = new HashSet<>();
         //The function should be able to check the element,add uniques and then remove the latest added
+        Arrays.sort(nums);
         backTrackAlgo(arrays, nums, permutationArray);
         System.out.println(" The list is" + permutationArray);
         return permutationArray;
@@ -72,8 +73,7 @@ public class LeetCodeArray3 {
             //Check the length of the arraylist
         if(createdArray.size()==nums.length){
                permutationList.add((new ArrayList<>(createdArray)));
-            List<Integer> tempList = new ArrayList<>();
-            tempList.addAll(createdArray);
+
            // System.out.println("what we return " + counter);
                 return;
            }
