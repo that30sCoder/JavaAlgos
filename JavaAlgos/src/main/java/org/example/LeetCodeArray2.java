@@ -5,7 +5,7 @@ import java.util.*;
 
 public class LeetCodeArray2 {
     public static void main(String[] args) {
-        int[] nums = {0,0,1,1,1,2,2,3,3,4};
+        int[] nums = {1,1,2};
         int target = 6;
         //2Sum problem
 
@@ -33,14 +33,16 @@ public class LeetCodeArray2 {
        // Map<Integer,Integer> countMap = new TreeMap<>();
         int[] printArray = new int[nums.length];
             int j = 1;
-        for(int i = 0;i<nums.length-1;i++){
+        for(int i = 0;i<nums.length;){
 
-                if (nums[i] == nums[i +1]) {
-                    nums[i]=Integer.MAX_VALUE;
-
+                if ( i<nums.length -1 && nums[i] == nums[i +1]) {
+                    nums[i+1]=Integer.MAX_VALUE;
+                    i=i+2;
                 }
-                else
+                else {
                     j++;
+                    i++;
+                }
 
 
         }
@@ -56,7 +58,7 @@ public class LeetCodeArray2 {
         }
 
         */
-        System.out.println(" " + printArray +j );
+
         return j;
     }
 
