@@ -19,6 +19,7 @@ public class LeetCodeArray3 {
         List<List<Integer>> permute = permute(nums);
         System.out.println("All array permutations are " + permute);
 
+
     }
 
     public static int removeElement(int[] nums, int val) {
