@@ -3,6 +3,7 @@ package org.example;
 import org.w3c.dom.ls.LSOutput;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class InterviewQuestions {
@@ -73,6 +74,36 @@ that, given an array A consisting of N integers, returns the maximum number of n
         return counter;
     }
 
+    public static int minimumDeletions(String s) {
+
+        /*
+        * You are given a string s consisting only of characters 'a' and 'b'
+
+You can delete any number of characters in s to make s balanced. s is balanced if there is no pair of indices (i,j) such that i < j and s[i] = 'b' and s[j]= 'a'.
+
+Return the minimum number of deletions needed to make s balanced.
+        * */
+
+        int minDeletions = 0;
+        int minDeletions1 = 0;
+        for(int i = 0;i<s.length();i++){
+                if(s.charAt(i)=='b'){
+                    minDeletions1++;
+                }
+                else {
+
+                    minDeletions = Math.min(minDeletions+1,minDeletions1);
+                }
+        }
+
+
+
+
+
+        System.out.println("check this" +minDeletions);
+        return 0;
+    }
+
     public static void main(String[] args) {
        /*Maximum moves question
         int count = maxMoves("QABAAAWOBL");
@@ -80,7 +111,12 @@ that, given an array A consisting of N integers, returns the maximum number of n
 
         */
 
+       /* All permuatations
         int allPermutations = maxPermutations(new int[]{4, 2, 5, 8, 7, 3, 7});
         System.out.println("All permutations " + allPermutations);
+
+        */
+        minimumDeletions("ababaaaabbbbbaaababbbbbbaaabbaababbabbbbaabbbbaabbabbabaabbbababaa");
+
     }
 }
