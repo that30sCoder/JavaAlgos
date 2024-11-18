@@ -20,6 +20,8 @@ public class InterviewQuestions {
            Given S = "QABAAAWOBL", the function should return 0. QABAAAWOBL
             Write an efficient algorithm for the following assumptions: N is an integer within the range [1..100,000];
              string S is made only of uppercase letters (A-Z). XBYNZ*/
+
+        String abc = word.charAt(1)+ "i";
         System.out.println(word.chars().filter(c -> c == 'N').count());
 
         int nCount = (((int) word.chars().filter(c -> c == 'N')
@@ -104,6 +106,26 @@ Return the minimum number of deletions needed to make s balanced.
         return 0;
     }
 
+
+    static int minDiff(int[] arr, int k, int m, int th) {
+        // code here
+        Arrays.sort(arr);
+        int index =0;
+        int difference=0;
+        int count =0;
+        for(int i = 0;i<arr.length;i++){
+            if(arr[i]>=th) {
+                count++;
+
+                index = k;
+                break;
+            }
+        }
+        difference = arr[index+k -1] - arr[index];
+        System.out.println("Difference is " + difference);
+        return difference;
+    }
+
     public static void main(String[] args) {
        /*Maximum moves question
         int count = maxMoves("QABAAAWOBL");
@@ -116,7 +138,13 @@ Return the minimum number of deletions needed to make s balanced.
         System.out.println("All permutations " + allPermutations);
 
         */
+        /*
+        Minimum Deletions required to have a balanced string
         minimumDeletions("ababaaaabbbbbaaababbbbbbaaabbaababbabbbbaabbbbaabbabbabaabbbababaa");
+
+         */
+
+        minDiff(new int[]{2,4},  1,  1,  1);
 
     }
 }
