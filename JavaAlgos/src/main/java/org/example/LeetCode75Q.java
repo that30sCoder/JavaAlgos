@@ -1,17 +1,47 @@
 
 package org.example;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class LeetCode75Q {
     public static void main(String[] args) {
         //find  difference between two arrays
-    findDifference(new int[]{1, 2, 3,3}, new int[]{1, 1, 2,2});
+    //findDifference(new int[]{1, 2, 3,3}, new int[]{1, 1, 2,2});
     //1732. Find the Highest Altitude
-    largestAltitude(new int[]{44,32,-9,52,23,-50,50,33,-84,47,-14,84,36,-62,37,81,-36,-85,-39,67,-63,64,-47,95,91,-40,65,67,92,-28,97,100,81});
+    //largestAltitude(new int[]{44,32,-9,52,23,-50,50,33,-84,47,-14,84,36,-62,37,81,-36,-85,-39,67,-63,64,-47,95,91,-40,65,67,92,-28,97,100,81});
+    //443. String Compression
+        char[] chars = {'a', 'a', 'b', 'b', 'c', 'c', 'c'};
+        System.out.println("Count of charcters"+ compress(chars));
+    }
+
+
+    public static int compress(char[] chars) {
+      int leftPointer = 0;
+      int modPointer = 0;
+      while(leftPointer<chars.length){
+          int count = 0;
+          char currentChar = chars[leftPointer];
+          while(leftPointer<chars.length && chars[leftPointer]==currentChar){
+              count++;
+              leftPointer++;
+          }
+          chars[modPointer++]=currentChar;
+
+
+          if(count>1){
+              for(char size :Integer.toString(count).toCharArray()){
+                  chars[modPointer]=size;
+                  modPointer++;
+              }
+          }
+      }
+      return modPointer;
+
 
     }
+
 
 
     public static int largestAltitude(int[] gain) {
