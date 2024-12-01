@@ -11,9 +11,46 @@ public class LeetCode150 {
       //  merge(new int[]{1, 2, 3, 0, 0, 0},3, new int[]{2, 5, 6},3);
 
         //LeetCode 523. Continuous SubArray Sum
-        checkSubarraySum(new int[]{23, 2, 4, 6, 6},7);
+      //  checkSubarraySum(new int[]{23, 2, 4, 6, 6},7);
+
+        //LeetCode 525.BinaryArray longest
+        int maxLength = findMaxLength(new int[]{0,0,1,0,0,0,1,1});
+        System.out.println("Max length"+ maxLength);
+
 
     }
+
+
+
+
+    public static int findMaxLength(int[] nums) {
+
+        int max =0;
+        HashMap<Integer,Integer> hashMap = new HashMap<>();
+        hashMap.put(0, -1);
+        int diff =0;
+
+        for(int i =0;i<nums.length;i++){
+
+            diff += (nums[i] == 0) ? 1 : -1;
+
+
+
+            if(hashMap.containsKey(diff)) {
+
+                max = Math.max(max, i - (hashMap.get(diff)));
+
+            }
+            else {
+                hashMap.put(diff,  i);
+            }
+        }
+
+        return max;
+    }
+
+
+
 
     public static  boolean checkSubarraySum(int[] nums, int k) {
 
